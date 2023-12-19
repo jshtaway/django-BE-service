@@ -35,6 +35,4 @@ ENV PATH="/py/bin:$PATH"
 
 USER django-user
 
-# # Define the command to run the app
-# CMD ["python", "app.py"]
 
