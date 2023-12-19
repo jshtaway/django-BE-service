@@ -13,15 +13,21 @@ EXPOSE 8000
 
 # Copy the requirements.txt file to the container
 COPY requirements.txt /tmp/requirements.txt
+COPY requirements.dev.txt /tmp/requirements.dev.txt
+
+ARG DEV=false
 
 # create venv, update pip, install dependencies, remove tmp (to keep docker lightweight),
 # create user so we're not opporating in root for security
 RUN python -m venv /py && \
-    /py/bin/pip3 install --upgrade pip3 && \
-    /py/bun/pip3 install -r /tmp/requirements.txt && \
+    /py/bin/pip install --upgrade pip && \
+    /py/bin/pip install -r /tmp/requirements.txt && \
+    if [ $DEV = "true" ]; \
+        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+    fi && \
     rm -rf /tmp && \
     adduser \
-        --disable-password \
+        --disabled-password \
         --no-create-home \
         django-user
 

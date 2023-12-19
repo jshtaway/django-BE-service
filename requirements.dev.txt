@@ -1,0 +1,3 @@
+# Requirements only needed in dev
+
+flake8>=3.9.2,<3.10
