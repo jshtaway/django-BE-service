@@ -19,18 +19,19 @@ ARG DEV=false
 
 # create venv, update pip, install dependencies, remove tmp (to keep docker lightweight),
 # create user so we're not opporating in root for security
-RUN python -m venv /py && \
+# install dev dependencies and give user own access if dev = true
+RUN adduser \
+        --disabled-password \
+        --no-create-home \
+        django-user && \
+    python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt; \
         chown -R django-user /app; \
     fi && \
-    rm -rf /tmp && \
-    adduser \
-        --disabled-password \
-        --no-create-home \
-        django-user
+    rm -rf /tmp
 
 ENV PATH="/py/bin:$PATH"
 
