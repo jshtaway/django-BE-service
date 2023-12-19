@@ -1,9 +1,8 @@
-from django.test import SimpleTestCase
 from app import calc
 from app.tests.steps_def import *
 from pytest_bdd import scenario
 
-class CalcTests(SimpleTestCase):
+class CalcTests():
     """Test stuff"""
 
     @scenario('features/unit.feature', 'Add two numbers in add function')

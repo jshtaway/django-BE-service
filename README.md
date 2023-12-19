@@ -6,6 +6,13 @@ Test-Driven Development is a software development process that emphasizes writin
 
 By using TDD, this repository aims to ensure that the code is thoroughly tested and that new features or changes do not introduce regressions. It promotes a more robust and maintainable codebase.
 
+# Continuous Integration
+
+This project utilizes GitHub Actions, a continuous integration and delivery platform, to automate the testing and validation of the codebase. The tests are written using pytest-bdd, a behavior-driven development framework for Python.
+
+GitHub Actions allows for the seamless integration of pytest-bdd into the development workflow. It automatically runs the tests whenever changes are pushed to the repository, ensuring that the codebase remains in a consistent and working state.
+
+To view the workflow configuration and learn more about how the tests are executed, please refer to the [`.github/workflows/checks.yml`](/.github/workflows/checks.yml) file.
 
 # django-BE-service
 
