@@ -17,7 +17,7 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v2 # action provided by github which checks the code out
       - name: Test
-        run: docker-compose run --rm app sh -c "python -m pytest app/tests"
+        run: docker-compose run --rm app -e DEV=true sh -c "python -m pytest app/app/tests"
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
 
