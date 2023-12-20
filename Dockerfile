@@ -29,7 +29,7 @@ RUN adduser \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt && \
-        chown -R django-user /app/app/tests; \
+        chown -R django-user /app; \
     fi && \
     rm -rf /tmp
 
