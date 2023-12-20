@@ -1,5 +1,5 @@
 from pytest_bdd import when, then, parsers
-from app.calc import add
+from app.app.calc import add
 
 
 @when(parsers.parse('I add "{x}" and "{y}"'))
