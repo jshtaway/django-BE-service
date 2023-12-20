@@ -1,4 +1,4 @@
-from pytest_bdd import given, when, then, parsers
+from pytest_bdd import when, then, parsers
 from app.calc import add
 
 

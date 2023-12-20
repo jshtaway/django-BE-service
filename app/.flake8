@@ -3,4 +3,8 @@ exclude =
     migrations,
     __pycache__,
     manage.py,
-    settings.py
+    settings.py,
+    tests/test_tests.py
+ignore = 
+    E501  ; ignore line too long rule
+

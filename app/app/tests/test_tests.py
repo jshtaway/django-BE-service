@@ -1,4 +1,3 @@
-from app import calc
 from app.tests.steps_def.steps import *
 from pytest_bdd import scenario
 
