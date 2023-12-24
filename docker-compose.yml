@@ -8,10 +8,12 @@ version: "3.9"
 # Docker Compose configuration for the Django backend service
 services:
   app:
-    depends_on:
-      - db
-    db:
-      image: postgres:13-alpine
+    # depends_on:
+    #   - db
+    # db:
+    #   image: postgres:13-alpine
+    #   volumes:
+    #     - dev-db-data:var/lib/postgresql/data
     # build from current directory
     build:
       context: .
