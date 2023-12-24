@@ -5,8 +5,8 @@ name: Checks # name as appears in github actions
 on: [push] # run on action
 
 jobs:
-  env:
-      CHATGPT_API_TOKEN: ${{ secrets.CHATGPT_API_TOKEN }}
+  # env:
+  #     CHATGPT_API_TOKEN: ${{ secrets.CHATGPT_API_TOKEN }}
   test-lint:
     name: Test and lint # human friendly name you'll see in github actions interface
     runs-on: ubuntu-20.04 # operating system the job will run on (basic linux)

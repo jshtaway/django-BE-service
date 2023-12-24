@@ -8,7 +8,11 @@ version: "3.9"
 # Docker Compose configuration for the Django backend service
 services:
   app:
-  # build from current directory
+    depends_on:
+      - db
+    db:
+      image: postgres:13-alpine
+    # build from current directory
     build:
       context: .
       args:
