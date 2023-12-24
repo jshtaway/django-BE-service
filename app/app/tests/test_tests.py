@@ -6,5 +6,10 @@ from pytest_bdd import scenario
 def test_add_numbers():
     """test adding numbers"""
     pass
-    # res = calc.add(5,6)
-    # self.assertEqual(res, 11)
+
+
+@scenario('features/views.feature', 'Greetings')
+def test_add_numbers():
+    """test adding numbers"""
+    pass
+

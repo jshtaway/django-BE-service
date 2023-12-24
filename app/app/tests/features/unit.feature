@@ -1,4 +1,4 @@
-Feature: Addition Functionality
+Feature: Tests
 
   Scenario: Add two numbers in add function
     When I add "5" and "7"

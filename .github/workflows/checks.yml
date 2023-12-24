@@ -5,6 +5,8 @@ name: Checks # name as appears in github actions
 on: [push] # run on action
 
 jobs:
+  env:
+      CHATGPT_API_TOKEN: ${{ secrets.CHATGPT_API_TOKEN }}
   test-lint:
     name: Test and lint # human friendly name you'll see in github actions interface
     runs-on: ubuntu-20.04 # operating system the job will run on (basic linux)
@@ -17,7 +19,7 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v2 # action provided by github which checks the code out
       - name: Test
-        run: docker-compose run --rm app sh -c "python -m pytest app/tests"
+        run: docker-compose run --rm app sh -c "python manage.py shell -i python -c \"import pytest; pytest.main(['app/tests'])\""
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
 
