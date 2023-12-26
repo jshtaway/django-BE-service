@@ -8,12 +8,8 @@ version: "3.9"
 # Docker Compose configuration for the Django backend service
 services:
   app:
-    # depends_on:
-    #   - db
-    # db:
-    #   image: postgres:13-alpine
-    #   volumes:
-    #     - dev-db-data:var/lib/postgresql/data
+    depends_on:
+      - db
     # build from current directory
     build:
       context: .
@@ -28,4 +24,20 @@ services:
     # command that runs the service is run by default if not overridden in dockerfile
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
-    
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=changeme
+
+volumes:
+      dev-db-data: 

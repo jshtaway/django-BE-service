@@ -20,18 +20,26 @@ ARG DEV=false
 # create venv, update pip, install dependencies, remove tmp (to keep docker lightweight),
 # create user so we're not opporating in root for security
 # install dev dependencies and give user own access if dev = true
+# postgresql-client: client pacakge needed inside alpine image in order for
+#   cyclopg2 to connect to pestgres
+# postrgresql-dev musl-dev --virtual: sets virtual dependency package help install 
+#   needed packages, then you can remove them after installation (at the end of command)
 RUN adduser \
         --disabled-password \
         --no-create-home \
         django-user && \
     python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-build-deps \
+        build-base postrgresql-dev musl-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt && \
         chown -R django-user /app/app/tests && echo DEV=${DEV}; \
     fi && \
-    rm -rf /tmp
+    rm -rf /tmp && \
+    apk del .tmp-build-deps
 
 ENV PATH="/py/bin:$PATH"
 
