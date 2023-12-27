@@ -1,6 +1,6 @@
 from pytest_bdd import when, then, parsers
 from unittest.mock import patch
-from psycopg2 import OperationalError as Psycopg2Error # error that may get thrown by db
+from psycopg2 import OperationalError as Psycopg2OpError # error that may get thrown by db
 from django.core.management import call_command
 from django.db.utils import OperationalError # error that may get thrown by db
 from django.test import SimpleTestCase
