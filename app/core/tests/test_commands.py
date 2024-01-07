@@ -1,3 +1,5 @@
+# Class version of tests using built in test tools
+
 # from pytest_bdd import when, then, parsers
 # from unittest.mock import patch
 # from psycopg2 import OperationalError as Psycopg2OpError # error that may get thrown by db

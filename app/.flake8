@@ -8,4 +8,6 @@ exclude =
 ignore = 
     E501  ; ignore line too long rule
     F403
+    F401
+    W504
 

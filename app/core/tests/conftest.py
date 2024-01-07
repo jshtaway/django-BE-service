@@ -3,6 +3,7 @@ import pytest
 from rest_framework.test import APIClient
 from unittest.mock import patch
 
+
 @pytest.fixture(scope="function")
 def test_data():
     return {}
@@ -12,6 +13,7 @@ def test_data():
 def client():
     return APIClient()
 
+
 # -- MOCK --
 @pytest.fixture(scope="function")
 def patched_check(capsys):
@@ -20,7 +22,6 @@ def patched_check(capsys):
     # Capture the output
     captured = capsys.readouterr()
     logging.info(captured.out)
-    
     logging.info("patched_check finished")
 
 
