@@ -7,6 +7,6 @@ def test_db_wait():
     pass
 
 
-@scenario('features/unit.feature', 'Test django DB delayed')
+@scenario('features/unit.feature', 'Inject db not ready errors')
 def test_db_delay():
     pass

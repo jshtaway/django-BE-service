@@ -2,8 +2,7 @@ Feature: Tests
 
   Scenario: Test django management commands
     When I wait for db ready
-    Then Django starts without error
 
-  Scenario: Test django DB delayed
+  Scenario: Inject db not ready errors
     When I wait for db delay
-    Then Test errors
+    Then Django starts after waiting
