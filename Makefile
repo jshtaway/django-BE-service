@@ -22,3 +22,10 @@ docker-run:
 
 docker-stop:
 	docker-compose down
+
+docker-makemigrations:
+	docker-compose run --rm app sh -c "python manage.py makemigrations"
+
+# apply migrations to the project
+docker-migrate:
+	docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"

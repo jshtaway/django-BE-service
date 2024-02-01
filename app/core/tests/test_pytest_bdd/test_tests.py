@@ -1,4 +1,4 @@
-from core.tests.steps_def.steps import *
+from core.tests.test_pytest_bdd.steps_def.steps import *
 from pytest_bdd import scenario
 
 
