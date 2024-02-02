@@ -1,3 +1,7 @@
+# super user
+# admin@zengineer.life
+# pass@123
+
 # Docker build command
 docker-build:
 	docker-compose build	
@@ -29,3 +33,6 @@ docker-makemigrations:
 # apply migrations to the project
 docker-migrate:
 	docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"
+
+docker-create_superuser:
+	docker-compose run --rm app sh -c "python manage.py createsuperuser"
