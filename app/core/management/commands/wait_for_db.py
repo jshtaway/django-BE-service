@@ -1,24 +1,26 @@
 """
-Django command to wait for the database to be available
+django will auto detect this file as a management command because of the folder infrastructure
+
+This command will wait for the database to be available before continuing to run the other commands.
 """
-import time
+
 from django.core.management.base import BaseCommand
-from psycopg2 import OperationalError as Psycopg2OpError
-# error that may get thrown by db
-from django.db.utils import OperationalError  # error that may get thrown by db
+import time
 
 
 class Command(BaseCommand):
-    """Django command to wait for database."""
+    """built in command class and method to handle the command needs this structure"""
+    help = 'Wait for database'
 
     def handle(self, *args, **options):
-        self.stdout.write('\n\nWaiting for database...')
+        self.stdout.write('Waiting for database...')
         db_up = False
-        while db_up is False:
+        while not db_up:
             try:
                 self.check(databases=['default'])
                 db_up = True
-            except (Psycopg2OpError, OperationalError):
+            except Exception as e:
                 self.stdout.write('Database unavailable, waiting 1 second...')
+                self.stdout.write(str(e))
                 time.sleep(1)
         self.stdout.write(self.style.SUCCESS('Database available!'))

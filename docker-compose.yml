@@ -17,7 +17,7 @@ services:
         - DEV=true
     # maps 8000 on the machine, to 8000 on the docker container
     ports:
-      - "8000:8000"
+      - "8080:8080"
     # map system dir into docker container, updates in local code will be reflected in running container in real time
     volumes:
       - ./app:/app
@@ -28,7 +28,9 @@ services:
     command: >
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
+             python manage.py runserver 0.0.0.0:8080"
+    # command: >
+    #   sh -c "python manage.py runserver 0.0.0.0:8080"
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
