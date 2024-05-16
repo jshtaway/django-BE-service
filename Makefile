@@ -4,7 +4,7 @@
 
 # Docker build command
 docker-build:
-	docker-compose build	
+	docker-compose build
 
 docker-lint:
 	docker-compose run --rm app sh -c "flake8"
@@ -36,3 +36,6 @@ docker-migrate:
 
 docker-create_superuser:
 	docker-compose run --rm app sh -c "python manage.py createsuperuser"
+
+docker-list-migrations:
+	docker-compose run --rm app sh -c "python manage.py showmigrations"
