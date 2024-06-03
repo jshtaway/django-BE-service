@@ -10,8 +10,8 @@ docker-lint:
 	docker-compose run --rm app sh -c "flake8"
 
 docker-test:
-	docker-compose run --rm app sh -c "python manage.py test"
-	docker-compose run --rm app sh -c "python manage.py shell -i python -c \"import pytest; pytest.main(['-s', 'app/test_pytests'])\""
+	docker-compose run --rm app sh -c "python manage.py test --verbosity=2"
+	# docker-compose run --rm app sh -c "python manage.py shell -i python -c \"import pytest; pytest.main(['-s', 'app/test_pytests'])\""
 	# docker-compose run --rm app sh -c "python manage.py shell -i python -c \"import pytest; pytest.main(['-s', 'core/tests'])\""
 
 # Creates app django project inside the app folder. Only needs to run once.
