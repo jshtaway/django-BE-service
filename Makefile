@@ -39,3 +39,11 @@ docker-create_superuser:
 
 docker-list-migrations:
 	docker-compose run --rm app sh -c "python manage.py showmigrations"
+
+clear-migrations:
+	docker-compose run app python manage.py migrate --fake-initial --noinput
+	find . -path "**/migrations/*.py" -not -name "__init__.py" -delete
+	find . -path "**/migrations/*.pyc"  -delete
+
+create-superuser:
+	❯ docker-compose run --rm app sh -c "python manage.py createsuperuser"
